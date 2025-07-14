@@ -6,8 +6,8 @@ env:
 
 on:
   push:
-    branches:
-      - main
+    # branches:
+    #   - main
   schedule:
     - cron: '1 14 * * 6' # Runs at 00:01 AEST every Sunday (14:01 UTC Saturday)
 

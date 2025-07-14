@@ -1,0 +1,33 @@
+name: Unlock Linked Anomalies
+
+env:
+  SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+  SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # 6:00 AM AEST = 20:00 UTC (previous day)
+    - cron: '0 20 * * *'
+    # 9:00 PM AEST = 11:00 UTC
+    - cron: '0 11 * * *'
+
+jobs:
+  unlock-anomalies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Run unlock script
+        run: go run jobs/unlock_linked_anomalies.go
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
