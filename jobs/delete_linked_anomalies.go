@@ -72,13 +72,13 @@ func main() {
 	}
 
 	// Step 3: Delete all linked anomalies
-	deleteReq, err := http.NewRequest("DELETE", supabaseUrl+"/rest/v1/linked_anomalies", nil)
+	deleteReq, err := http.NewRequest("DELETE", supabaseUrl+"/rest/v1/linked_anomalies?id=gt.0", nil)
 	if err != nil {
 		panic(err)
 	}
 	deleteReq.Header.Set("apikey", supabaseKey)
 	deleteReq.Header.Set("Authorization", "Bearer "+supabaseKey)
-	deleteReq.Header.Set("Prefer", "resolution=merge-duplicates") 
+	deleteReq.Header.Set("Prefer", "return=minimal")
 
 	deleteResp, err := client.Do(deleteReq)
 	if err != nil {

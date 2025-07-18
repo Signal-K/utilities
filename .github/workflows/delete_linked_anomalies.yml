@@ -9,7 +9,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '1 14 * * 6' # 00:01 AEST Sunday
+    - cron: '1 14 * * 6' # Runs at 00:01 AEST every Sunday (14:01 UTC Saturday)
 
 jobs:
   delete-linked-anomalies:
@@ -28,3 +28,9 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+      - name: Upload anomaly logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: linked-anomalies-logs
+          path: logs/
