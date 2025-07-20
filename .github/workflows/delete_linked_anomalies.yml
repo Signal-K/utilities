@@ -1,0 +1,29 @@
+name: Delete Expired Linked Anomalies
+
+env:
+  SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+  SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+
+on:
+  schedule:
+    # Runs every Sunday at 00:01 AEST (which is 14:01 UTC Saturday)
+    - cron: '1 14 * * 6'
+
+jobs:
+  delete-anomalies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Run anomaly cleanup
+        run: go run jobs/delete_linked_anomalies.go
+        env:
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+
