@@ -5,14 +5,9 @@ env:
   SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
 on:
-  push:
-    branches:
-      - main
   schedule:
-    # 6:00 AM AEST = 20:00 UTC (previous day)
-    - cron: '0 20 * * *'
-    # 9:00 PM AEST = 11:00 UTC
-    - cron: '0 11 * * *'
+    # Runs at 9:00 PM AEST on Monday and Thursday (11:00 UTC)
+    - cron: '0 11 * * 1,4'
 
 jobs:
   unlock-anomalies:
