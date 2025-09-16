@@ -1,0 +1,34 @@
+[
+  {
+    "id": 199,
+    "author": "09c4f7eb-e24b-4414-9e78-72d8217d4083",
+    "anomaly_id": 356867115,
+    "classification_id": null,
+    "date": "2025-07-21T13:51:35.445964Z",
+    "automaton": "Telescope"
+  },
+  {
+    "id": 201,
+    "author": "09c4f7eb-e24b-4414-9e78-72d8217d4083",
+    "anomaly_id": 167804011,
+    "classification_id": null,
+    "date": "2025-07-21T13:51:35.445993Z",
+    "automaton": "Telescope"
+  },
+  {
+    "id": 200,
+    "author": "09c4f7eb-e24b-4414-9e78-72d8217d4083",
+    "anomaly_id": 85293053,
+    "classification_id": null,
+    "date": "2025-07-21T13:51:35.445991Z",
+    "automaton": "Telescope"
+  },
+  {
+    "id": 202,
+    "author": "09c4f7eb-e24b-4414-9e78-72d8217d4083",
+    "anomaly_id": 345724317,
+    "classification_id": null,
+    "date": "2025-07-21T13:51:35.446048Z",
+    "automaton": "Telescope"
+  }
+]

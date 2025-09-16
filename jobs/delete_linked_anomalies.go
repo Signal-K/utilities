@@ -19,11 +19,11 @@ type LinkedAnomaly struct {
 }
 
 func main() {
-	supabaseUrl := os.Getenv("SUPABASE_URL")
-	supabaseKey := os.Getenv("SUPABASE_SERVICE_ROLE_KEY")
+	supabaseURL := "http://127.0.0.1:54321"// os.Getenv("SUPABASE_URL")
+	supabaseKey := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0" // os.Getenv("SUPABASE_SERVICE_ROLE_KEY")
 
 	// Step 1: Fetch existing linked anomalies
-	req, err := http.NewRequest("GET", supabaseUrl+"/rest/v1/linked_anomalies?select=*", nil)
+	req, err := http.NewRequest("GET", supabaseURL+"/rest/v1/linked_anomalies?select=*", nil)
 	if err != nil {
 		panic(err)
 	}
@@ -72,7 +72,7 @@ func main() {
 	}
 
 	// Step 3: Delete all linked anomalies
-	deleteReq, err := http.NewRequest("DELETE", supabaseUrl+"/rest/v1/linked_anomalies?id=gt.0", nil)
+	deleteReq, err := http.NewRequest("DELETE", supabaseURL+"/rest/v1/linked_anomalies?id=gt.0", nil)
 	if err != nil {
 		panic(err)
 	}
